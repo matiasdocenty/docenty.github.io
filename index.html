@@ -1,15 +1,58 @@
-<script>
-  (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>채널톡 설치 예시</title>
+</head>
+<body>
 
-  ChannelIO('boot', {
-    "pluginKey": "b1bdbc53-9c26-4103-a25b-028a6a8fc7b2",
-    "memberId": "USER_MEMBER_ID", // fill user's member id
-    "profile": { // fill user's profile
-      "name": "USER_NAME", // fill user's name
-      "mobileNumber": "USER_MOBILE_NUMBER", // fill user's mobile number
-      "landlineNumber": "USER_LANDLINE_NUMBER", // fill user's landline number  
-      "CUSTOM_VALUE_1": "VALUE_1", // custom property
-      "CUSTOM_VALUE_2": "VALUE_2" // custom property
-    }
-  });
-</script>
+  <h1>채널톡 설치 페이지</h1>
+  <p>여기서는 채널톡을 설정하는 예시를 볼 수 있습니다.</p>
+
+  <script>
+    (function(){
+      var w=window;
+      if(w.ChannelIO){ return w.console.error("ChannelIO script included twice."); }
+      
+      var ch = function(){ ch.c(arguments); };
+      ch.q = [];
+      ch.c = function(args){ ch.q.push(args); };
+
+      w.ChannelIO = ch;
+
+      function l(){
+        if(w.ChannelIOInitialized){ return; }
+        w.ChannelIOInitialized = true;
+
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
+
+        var x = document.getElementsByTagName("script")[0];
+        if(x.parentNode){ x.parentNode.insertBefore(s, x); }
+      }
+
+      if(document.readyState === "complete"){ l(); }
+      else{
+        w.addEventListener("DOMContentLoaded", l);
+        w.addEventListener("load", l);
+      }
+    })();
+
+    ChannelIO('boot', {
+      "pluginKey": "b1bdbc53-9c26-4103-a25b-028a6a8fc7b2",
+      "memberId": "USER_MEMBER_ID", // 실제 사용자 ID로 변경
+      "profile": { 
+        "name": "USER_NAME", // 사용자 이름
+        "mobileNumber": "USER_MOBILE_NUMBER", // 사용자 모바일 번호
+        "landlineNumber": "USER_LANDLINE_NUMBER", // 사용자 집 전화 번호
+        "CUSTOM_VALUE_1": "VALUE_1", // 커스텀 속성 1
+        "CUSTOM_VALUE_2": "VALUE_2"  // 커스텀 속성 2
+      }
+    });
+  </script>
+
+</body>
+</html>
